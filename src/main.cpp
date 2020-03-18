@@ -1,8 +1,10 @@
-#include <ESP32/include/init.h>
-#include <ESP32/include/rom/ets_sys.h>
+#include "init.h"
+#include "rom/ets_sys.h"
 
 extern "C" {
+
   void main_cpu0();
+
 }
 
 void main_cpu0() {

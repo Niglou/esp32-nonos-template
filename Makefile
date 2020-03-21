@@ -32,6 +32,12 @@ build : $(NAME).bin
 	@$(SIZE) -B -d $(NAME).elf
 	@echo
 
+upload :
+	# ESP32
+	@esptool.py -c esp32 write_flash 0x1000 $(NAME).bin
+	# ESP32-PICO-D4
+	#@esptool.py -c esp32 write_flash -sc 6,17,8,11,16 0x1000 $(NAME).bin
+
 $(NAME).bin : $(NAME).elf
 	@esptool.py -c esp32 elf2image -ff 80m -fm dio -fs 4MB $< #ESP32
 	@#esptool.py -c esp32 elf2image -ff 80m -fm dio -fs 4MB -sc 6,17,8,11,16 $< #ESP32-PICO-D4
